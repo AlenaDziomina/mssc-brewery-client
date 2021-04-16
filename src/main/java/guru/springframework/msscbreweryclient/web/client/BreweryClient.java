@@ -22,7 +22,7 @@ public class BreweryClient {
     }
 
     public BeerDto getBeerById(UUID uuid) {
-        return restTemplate.getForObject(apiHost + BEER_PATH_V1 + uuid.toString(), BeerDto.class);
+        return restTemplate.getForObject(apiHost + BEER_PATH_V1 + uuid, BeerDto.class);
     }
 
     public URI saveNewBeer(BeerDto beerDto) {
@@ -30,7 +30,11 @@ public class BreweryClient {
     }
 
     public void updateBeer(UUID uuid, BeerDto beerDto) {
-        restTemplate.put(apiHost + BEER_PATH_V1 + uuid.toString(), beerDto);
+        restTemplate.put(apiHost + BEER_PATH_V1 + uuid, beerDto);
+    }
+
+    public void deleteBeer(UUID uuid) {
+        restTemplate.delete(apiHost + BEER_PATH_V1 + uuid);
     }
 
     public void setApiHost(String apiHost) {
